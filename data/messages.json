@@ -4,5 +4,17 @@
     "email": "user@example.com",
     "message": "First user message",
     "date": "2025-05-12T17:31:01.635Z"
+  },
+  {
+    "nom": "User",
+    "email": "user@example.com",
+    "message": "<script>alert('XSS')</script>\r\n<img src=x onerror=alert('XSS')>\r\n<svg onload=alert('XSS')>",
+    "date": "2025-05-12T17:42:02.473Z"
+  },
+  {
+    "nom": "User",
+    "email": "user@example.com",
+    "message": "<script>alert('XSS')</script>\r\n<img src=x onerror=alert('XSS')>\r\n<svg onload=alert('XSS')>",
+    "date": "2025-05-12T17:46:12.689Z"
   }
 ]

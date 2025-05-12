@@ -54,6 +54,21 @@ app.use(helmet({
     }
   }
 }));
+
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", 'https://www.google.com/recaptcha/', 'https://www.gstatic.com/recaptcha/'],
+      styleSrc: ["'self'"],
+      imgSrc: ["'self'", 'data:'],
+      objectSrc: ["'none'"],
+      frameSrc: ["'self'", 'https://www.google.com/recaptcha/'],
+      upgradeInsecureRequests: []
+    }
+  })
+);
+
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.urlencoded({ extended: false }));
 
@@ -92,6 +107,8 @@ function readJson(file) {
 function writeJson(file, data) {
   fs.writeFileSync(file, JSON.stringify(data, null, 2));
 }
+
+
 
 // Serve templates with injected SITE_KEY
 function renderTemplate(name) {
